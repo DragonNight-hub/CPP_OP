@@ -1,0 +1,263 @@
+%
+O0201
+(CROIX 4 BRANCHES - S/PHASE B - 1ER COTE)
+(OPERATIONS 201 A 207)
+(BRUT 70 X 70 X 36 - ALU 2017)
+(EDOUARD DOS SANTOS)
+(18/08/2026)
+(HAAS VF - FRAISAGE - MM)
+
+(ORIGINE G54 :)
+(X0 Y0 = CENTRE DE LA PIECE)
+(Z0    = FACE SUP. FINIE APRES SURFACAGE)
+(        LE BRUT EST 1MM AU DESSUS DE Z0)
+
+(DEFINITION PIECE :)
+(BRANCHES 20 g8 = 19.977 MOY. -0.007/-0.040)
+(ENVERGURE CROIX 50 X 50)
+(BOUTS DE BRANCHE R9.988 - CONGES INT. R5)
+(DEGAGEMENT AUTOUR DE LA CROIX : 12MM / FACE)
+(EPAISSEUR CROIX FINIE 34 +/-0.05 - PARALL. 0.06 A)
+(4 X M10 SUR ENTRAXE 50 X 50)
+
+(OUTILS :)
+(T1 - FRAISE EBAUCHE D16 3Z CARB.    H01 D01 D02 D03)
+(T2 - FRAISE A SURFACER D63 5Z       H02)
+(T3 - FORET A POINTER D10 90DEG      H03)
+(T4 - FORET D8.5  POUR M10 X 1.5     H04)
+(T5 - TARAUD M10 X 1.5               H05)
+(T6 - FRAISE FINITION D8 4Z          H06 D06)
+(T7 - FRAISE A CHANFREINER D12 90DEG H07 D07)
+
+(JAUGES RAYON A ENTRER EN CORRECTEUR :)
+(D01 = 24.0  EBAUCHE PASSE 1  R8 + 16.0)
+(D02 = 16.0  EBAUCHE PASSE 2  R8 + 8.0)
+(D03 = 8.3   EBAUCHE PASSE 3  R8 + 0.3 DE SUREP.)
+(D06 = 4.0   FINITION D8)
+(D07 = RAYON DU BOUT PLAT DU CHANFREIN - EX. 1.0)
+
+(ATTENTION BRIDAGE : L OUTIL BALAYE JUSQU A 57MM)
+(DU CENTRE EN PASSE 1 - DEGAGER LES MORS)
+
+(LIGNE DE SECURITE)
+G00 G17 G21 G40 G49 G80 G90
+G54
+M09
+
+G91 G28 Z0.
+G90
+
+(====================================================)
+(  201 - EBAUCHE CONTOUR CROIX - T1 D16             )
+(  3 NIVEAUX Z X 3 PASSES CONCENTRIQUES             )
+(  AVALANT : SENS TRIGO + G42                       )
+(====================================================)
+
+T1 M06
+G00 G90 G54 X14.988 Y-50. S6000 M03
+G43 H01 Z25. M08
+G00 Z2.
+
+G01 Z-4. F400.
+M97 P2000
+
+G01 Z-8. F400.
+M97 P2000
+
+G01 Z-12. F400.
+M97 P2000
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  202 - SURFACAGE FACE SUP. - T2 D63               )
+(  ENLEVE 1MM - 2 PASSES DE 35 DE LARGEUR           )
+(====================================================)
+
+T2 M06
+G00 G90 G54 X-70. Y-17.5 S2000 M03
+G43 H02 Z25. M08
+G00 Z5.
+
+G01 Z0. F500.
+G01 X70. F1500.
+G00 Y17.5
+G01 X-70. F1500.
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  203 - POINTAGE 4 TROUS M10 - T3 D10 90DEG        )
+(  FOND DE POCHE A Z-12 - POINTAGE D10.6 = CHANFREIN)
+(====================================================)
+
+T3 M06
+G00 G90 G54 X25. Y25. S2000 M03
+G43 H03 Z25. M08
+G00 Z5.
+
+G98 G82 Z-17.3 R-10. P100 F200.
+X-25.
+Y-25.
+X25.
+G80
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  204 - PERCAGE D8.5 DEBOUCHANT - T4               )
+(  FOND POCHE Z-12 + 23 DE MATIERE + POINTE         )
+(  A ADAPTER SI EPAISSEUR BRUT DIFFERENTE           )
+(====================================================)
+
+T4 M06
+G00 G90 G54 X25. Y25. S3200 M03
+G43 H04 Z25. M08
+G00 Z5.
+
+G98 G83 Z-38. R-10. Q5. F480.
+X-25.
+Y-25.
+X25.
+G80
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  205 - TARAUDAGE M10 X 1.5 - T5                   )
+(  TARAUDAGE RIGIDE  F = S X PAS = 400 X 1.5        )
+(====================================================)
+
+T5 M06
+G00 G90 G54 X25. Y25. S400 M03
+G43 H05 Z25. M08
+G00 Z5.
+
+G98 G84 Z-36. R-4. F600.
+X-25.
+Y-25.
+X25.
+G80
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  206 - FINITION CONTOUR CROIX - T6 D8             )
+(  2 PASSES Z - ENLEVE LES 0.3 DE SUREPAISSEUR      )
+(  COTE OBTENUE : BRANCHES 20 g8                    )
+(====================================================)
+
+T6 M06
+G00 G90 G54 X14.988 Y-50. S8000 M03
+G43 H06 Z25. M08
+G00 Z2.
+
+G01 Z-6. F400.
+G01 G42 D06 Y-9.988 F1500.
+M97 P1000
+G01 G40 Y-50.
+
+G01 Z-12. F400.
+G01 G42 D06 Y-9.988 F1500.
+M97 P1000
+G01 G40 Y-50.
+
+G00 Z25. M09
+G91 G28 Z0.
+G90
+M05
+M01
+
+(====================================================)
+(  207 - CHANFREIN 1 X 45 ARETE SUP. CROIX - T7     )
+(  POINTE A Z-1. ET D07 = RAYON BOUT PLAT           )
+(  SI CHANFREIN TROP GRAND : AUGMENTER D07          )
+(====================================================)
+
+T7 M06
+G00 G90 G54 X14.988 Y-50. S5000 M03
+G43 H07 Z25. M08
+G00 Z5.
+
+G01 Z-1. F400.
+G01 G42 D07 Y-9.988 F800.
+M97 P1000
+G01 G40 Y-50.
+
+G00 Z25. M09
+G91 G28 Z0.
+G91 G28 Y0.
+G90
+M05
+M30
+
+(====================================================)
+(  SP N2000 : 1 NIVEAU Z = 3 PASSES CONCENTRIQUES   )
+(  ENTREE / SORTIE PERPENDICULAIRES EN X14.988      )
+(====================================================)
+N2000
+G01 G42 D01 Y-9.988 F1200.
+M97 P1000
+G01 G40 Y-50.
+
+G01 G42 D02 Y-9.988 F1200.
+M97 P1000
+G01 G40 Y-50.
+
+G01 G42 D03 Y-9.988 F1200.
+M97 P1000
+G01 G40 Y-50.
+M99
+
+(====================================================)
+(  SP N1000 : PROFIL CROIX - SENS TRIGO             )
+(  DEPART ET ARRIVEE X14.988 Y-9.988                )
+(====================================================)
+N1000
+G01 X15.012
+G03 X15.012 Y9.988 I0. J9.988
+G01 X14.988
+G02 X9.988 Y14.988 I0. J5.
+G01 Y15.012
+G03 X-9.988 Y15.012 I-9.988 J0.
+G01 Y14.988
+G02 X-14.988 Y9.988 I-5. J0.
+G01 X-15.012
+G03 X-15.012 Y-9.988 I0. J-9.988
+G01 X-14.988
+G02 X-9.988 Y-14.988 I0. J-5.
+G01 Y-15.012
+G03 X9.988 Y-15.012 I9.988 J0.
+G01 Y-14.988
+G02 X14.988 Y-9.988 I5. J0.
+M99
+
+(====================================================)
+(  CONTROLE APRES S/PHASE B                         )
+(  BRANCHES 20 g8 -> MICROMETRE 19.960 / 19.993     )
+(  ENVERGURE 50    -> PIED A COULISSE               )
+(  PROFONDEUR 12   -> JAUGE DE PROFONDEUR           )
+(  ENTRAXE 50 X 50 -> COLONNE DE MESURE             )
+(  M10 -> CALIBRE TAMPON FILETE                     )
+(====================================================)
+%
