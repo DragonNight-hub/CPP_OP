@@ -1,0 +1,116 @@
+========================================================================
+LAMBORGHINI REVUELTO - JOUET USINE - GAMME D USINAGE
+========================================================================
+
+PIECE FINIE   : caisse 90 x 37 x 21 mm  + 4 roues DIA 11 x 4
+MATIERE       : ALU 2017
+BRUT CAISSE   : 100 x 50 x 35 mm      (1 piece)
+BRUT ROUES    : barre DIA 12          (4 x 8 mm mini + reprise mors)
+AXES          : 2 tiges DIA 6 x 42 mm (rond etire ou tige rectifiee)
+
+PRINCIPE
+  Le brut fait 35 de haut. La voiture n en occupe que 21+2 = 23.
+  Les 10 mm du bas restent en SEMELLE SACRIFICIELLE : c est par elle
+  qu on bride en pose 1, et c est dans elle que le conge de la fraise
+  boule tombe, jamais sur la piece. On la separe en pose 5.
+
+  G54 X0 = pointe du nez.  Y0 = axe de symetrie.
+  Z0 (pose 1) = dessous de caisse = 10 mm au-dessus du bas du brut.
+
+------------------------------------------------------------------------
+POSE 1 - LA CAISSE, PAR LE DESSUS
+------------------------------------------------------------------------
+Bridage : le brut a plat dans l etau, serre sur les 10 mm du bas.
+          Depassement mini 25 mm au-dessus des mors.
+
+  O0702  FORME DE LA CAISSE            T13  boule DIA 8   S7000
+         N100..N150 = ebauche 6 niveaux (Z18 / 15 / 11.5 / 8 / 4 / 0)
+         N200       = finition, balayage en Y, pas 1.2
+         Duree indicative : 2271 lignes
+
+  O0703  DETAIL (OPTIONNEL)            T16  boule DIA 2   S9000
+         optiques, lamelles de capot moteur, ecopes, arete de flanc,
+         splitter avant, bandeau arriere.
+         *** NE PAS DEBRIDER ENTRE O0702 ET O0703 ***
+         Si tu n as pas de DIA 2, saute ce programme : la voiture est
+         deja complete sans lui, elle est juste moins detaillee.
+
+------------------------------------------------------------------------
+POSE 2 - FLANC DROIT
+------------------------------------------------------------------------
+Bridage : la piece couchee sur le flanc gauche, semelle toujours prise.
+G54 : X0 = nez (identique pose 1)
+      Y0 = dessous de caisse, Y+ vers le toit
+      Z0 = plan du flanc (demi-largeur 18.5), Z- vers le centre
+
+  O0704                                 T14  foret DIA 6  S2200
+         2 axes traversants G83 : X19 Y4  et  X70 Y4, Z-40
+         PERCER EN PREMIER, flanc encore plein.
+                                        T15  fraise DIA 3 S6000
+         2 poches d aile R6.5 prof 3.  + prise d air laterale
+         (X53..61, Y2..6, prof 3.5)
+
+------------------------------------------------------------------------
+POSE 3 - FLANC GAUCHE
+------------------------------------------------------------------------
+Retourner la piece, meme G54.
+
+  O0705                                 T15  fraise DIA 3 S6000
+         mêmes poches d aile + prise d air, pas de percage
+         (les axes sont deja traversants)
+
+------------------------------------------------------------------------
+POSE 4 - ARRIERE
+------------------------------------------------------------------------
+Bridage : nez vers le bas, queue vers le haut.
+G54 : X0 = axe de symetrie, Y0 = dessous de caisse,
+      Z0 = face arriere (le X90 de la pose 1)
+
+  O0706                                 T15  fraise DIA 3 S6000
+         surfacage de la face (supprime l arrondi de la bille)
+         + 3 canaux de diffuseur
+                                        T17  foret DIA 3  S3500
+         2 sorties d echappement, prof 4
+
+------------------------------------------------------------------------
+POSE 5 - SEPARATION
+------------------------------------------------------------------------
+  1. Scier la voiture de la semelle en laissant ~1 mm de trop.
+  2. Rebrider la voiture SUR LE DOS, serree par ses deux flancs
+     verticaux (9.5 mm de haut aux essieux).
+     MORDACHES DOUCES - ne pas serrer sur les poches d aile
+     ni sur la prise d air.
+
+  O0707                                 T10  fraise DIA 8  S6000
+         surfacage du dessous, 2 passes (Z+1 puis Z0)
+
+------------------------------------------------------------------------
+TOURNAGE - LES ROUES
+------------------------------------------------------------------------
+  O0701                                 barre DIA 12
+         T101 ebauche / T202 foret DIA 6.5 / T303 finition
+         T404 tronconnage largeur 2
+         Roue finie DIA 11 x 4, alesage 6.5 traversant.
+         LANCER 4 FOIS. Entre chaque : avancer la barre de 8 mm.
+
+------------------------------------------------------------------------
+MONTAGE
+------------------------------------------------------------------------
+  Axe DIA 6 x 42 traversant la caisse (37 de large) -> 2.5 de chaque cote.
+  Roue alesage 6.5 sur axe DIA 6 -> jeu 0.5, la roue tourne.
+  Roue ep. 4 dans une ouverture R6.5 -> elle depasse de 1.0 du flanc.
+  Garde au sol 1.5 mm (axe a Z4, roue R5.5) = assiette rabaissee.
+  Bloquer les roues : point de colle en bout d axe, ou goupille DIA 1,
+  ou ecraser legerement l extremite de l axe.
+
+------------------------------------------------------------------------
+JEU D OUTILS
+------------------------------------------------------------------------
+  T10  fraise 2 tailles DIA 8   (surfacage dessous)
+  T13  fraise boule      DIA 8  (caisse)
+  T14  foret             DIA 6  (axes de roues)
+  T15  fraise 2 tailles  DIA 3  (poches, prise d air, diffuseur)
+  T16  fraise boule      DIA 2  (detail - optionnel)
+  T17  foret             DIA 3  (echappements)
+  Tour : T101 / T202 (DIA 6.5) / T303 / T404 (largeur 2)
+========================================================================
