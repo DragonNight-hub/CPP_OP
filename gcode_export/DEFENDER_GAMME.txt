@@ -1,0 +1,61 @@
+========================================================================
+DEFENDER JOUET - COROBCHASTA MACHINE - GAMME D USINAGE
+========================================================================
+
+STYLE     : caisse carree/anguleuse, capot plat, pare-brise droit,
+            toit plat de break (type Defender / UAZ) - "просто"
+PIECE FINIE : caisse 85 x 34 x 28 mm + 4 roues DIA 11 x 4
+MATIERE   : ALU 2017
+BRUT CAISSE : 95 x 44 x 38 mm
+AXES      : 2 tiges DIA 6 x 37 mm
+
+Meme principe que la Revuelto (semelle sacrificielle 10mm, trajectoire
+calculee par depose de bille pour zero gouge, roues qui tournent) mais
+SIMPLIFIE : pas de passe de detail fine, pas de prise d air, pas de
+pose arriere separee - 4 poses seulement.
+
+  G54 X0 = pointe du pare-choc avant.  Y0 = axe de symetrie.
+  Z0 (pose 1) = dessous de caisse = 10 mm au-dessus du bas du brut.
+
+------------------------------------------------------------------------
+POSE 1 - LA CAISSE, PAR LE DESSUS
+------------------------------------------------------------------------
+  O0910  FORME DE LA CAISSE            T13  boule DIA 8   S7000
+         ebauche 6 niveaux + finition, gouge verifie 0.0005mm
+
+------------------------------------------------------------------------
+POSE 2 - FLANC DROIT
+------------------------------------------------------------------------
+  O0911                                 T14  foret DIA 6  S2200
+         2 axes traversants (X18 et X67, Y4, Z-37)
+                                        T15  fraise DIA 3 S6000
+         2 poches d aile R6.5 prof 3
+
+------------------------------------------------------------------------
+POSE 3 - FLANC GAUCHE
+------------------------------------------------------------------------
+  O0912                                 T15  fraise DIA 3 S6000
+         memes poches d aile, pas de percage (axes deja traversants)
+
+------------------------------------------------------------------------
+POSE 4 - SEPARATION
+------------------------------------------------------------------------
+  1. Scier de la semelle en laissant ~1mm de trop.
+  2. Rebrider sur le dos, serree par les deux flancs verticaux
+     (15mm de haut aux essieux).
+
+  O0913                                 T10  fraise DIA 8  S6000
+         surfacage du dessous, 2 passes
+
+------------------------------------------------------------------------
+TOURNAGE - LES ROUES
+------------------------------------------------------------------------
+  O0914  meme roue que la Revuelto (DIA 11 x 4, alesage 6.5 / axe 6)
+         LANCER 4 FOIS, avancer la barre de 8mm entre chaque.
+
+------------------------------------------------------------------------
+MONTAGE
+------------------------------------------------------------------------
+  Empattement 49mm (essieu avant X18, arriere X67).
+  Garde au sol 1.5mm, jeu roue/axe 0.5mm - identique a la Revuelto.
+========================================================================
